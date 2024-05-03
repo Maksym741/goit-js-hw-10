@@ -6,7 +6,7 @@
 */
 @import url('./reset.css');
 @import url('./1-timer.css');
-@import url('./2-snackdar.css');
+@import url('./2-snackbar.css');
 @import 'flatpickr/dist/flatpickr.min.css';
 @import 'izitoast/dist/css/iziToast.min.css';
 
