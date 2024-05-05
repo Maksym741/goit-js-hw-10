@@ -14,6 +14,8 @@ function convertMs(ms) {
   return { days, hours, minutes, seconds };
 }
 
+const dataStart = document.querySelector('[data-start]');
+const datetimePicker = document.getElementById('datetime-picker');
 let userSelectedDate;
 const options = {
   enableTime: true,
@@ -28,18 +30,18 @@ const options = {
         title: 'Error',
         message: 'Please choose a date in the future',
       });
-      document.querySelector('[data-start]').disabled = true;
+      dataStart.disabled = true;
     } else {
-      document.querySelector('[data-start]').disabled = false;
+      dataStart.disabled = false;
     }
   },
 };
 
 flatpickr('#datetime-picker', options);
 
-document.querySelector('[data-start]').addEventListener('click', function () {
+dataStart.addEventListener('click', function () {
   this.disabled = true;
-  document.getElementById('datetime-picker').disabled = true;
+  datetimePicker.disabled = true;
   const countdownInterval = setInterval(function () {
     const currentDate = new Date();
     const timeDifference = userSelectedDate - currentDate;
@@ -49,8 +51,8 @@ document.querySelector('[data-start]').addEventListener('click', function () {
         title: 'Success',
         message: 'Countdown finished!',
       });
-      document.querySelector('[data-start]').disabled = false;
-      document.getElementById('datetime-picker').disabled = false;
+      dataStart.disabled = false;
+      datetimePicker.disabled = false;
       return;
     }
     const { days, hours, minutes, seconds } = convertMs(timeDifference);
